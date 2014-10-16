@@ -1,0 +1,10 @@
+show allResults
+[log4j] = org.apache.log4j.*
+{root} = sample
+[root] = ${root}.*
+[foo] = ${root}.foo.*
+[bar] = ${root}.bar.*
+
+check [root] independentOf [log4j]
+check [bar] independentOf [foo]
+check absenceOfPackageCycles > 1 in [root]
