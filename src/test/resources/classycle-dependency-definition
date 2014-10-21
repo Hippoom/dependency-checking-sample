@@ -2,9 +2,9 @@ show allResults
 [log4j] = org.apache.log4j.*
 {root} = sample
 [root] = ${root}.*
-[foo] = ${root}.foo.*
-[bar] = ${root}.bar.*
+[domain] = ${root}.domain.*
+[adapters] = [root] excluding [domain]
 
 check [root] independentOf [log4j]
-check [bar] independentOf [foo]
+check [domain] independentOf [adapters]
 check absenceOfPackageCycles > 1 in [root]

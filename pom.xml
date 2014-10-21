@@ -22,6 +22,15 @@
                 <groupId>org.pitest</groupId>
                 <artifactId>classycle-maven-plugin</artifactId>
                 <version>0.4</version>
+                <configuration>
+                    <dependencyDefinitionFile>
+                        src/test/resources/classycle-dependency-definition
+                    </dependencyDefinitionFile>
+                    <!-- This can be classycle.dependency.DefaultResultRenderer
+                        for text (the default if omitted) or
+                        classycle.dependency.XMLResultRenderer for xml -->
+                    <resultRenderer>classycle.dependency.DefaultResultRenderer</resultRenderer>
+                </configuration>
                 <executions>
                     <execution>
                         <id>verify</id>
@@ -29,15 +38,6 @@
                         <goals>
                             <goal>check</goal>
                         </goals>
-                        <configuration>
-                            <dependencyDefinitionFile>
-                                src/test/resources/classycle-dependency-definition
-                            </dependencyDefinitionFile>
-                            <!-- This can be classycle.dependency.DefaultResultRenderer
-                                for text (the default if omitted) or
-                                classycle.dependency.XMLResultRenderer for xml -->
-                            <resultRenderer>classycle.dependency.DefaultResultRenderer</resultRenderer>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
